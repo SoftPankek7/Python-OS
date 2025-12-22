@@ -1,0 +1,11 @@
+echo Welcome to the Environment!
+echo There is a HELP command,
+echo but it is only for commands,
+echo and not for listing them.
+echo
+echo !!!!!TYPE "EXIT" TO EXIT!!!!!
+echo (and be careful of libaries)
+echo
+echo ------------------------------
+echo You can access this at exec.ep
+echo ------------------------------

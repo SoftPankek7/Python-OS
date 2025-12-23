@@ -3,6 +3,7 @@ class Environment:
         "name": "edit",
         "credits": [],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "A VERY simple text editor (Built-in)",
         "helpinfo": "Append to files!"
     }

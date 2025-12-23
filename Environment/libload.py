@@ -14,15 +14,18 @@ def load_libs():
             if not module_name:
                 continue
             try:
-                module = importlib.import_module(module_name)
-                imported_modules[module_name] = module
+                if module_name[0][0] == ";" or module_name[0][0] == "-" or module_name[0][0] == "":
+                    pass
+                else:
+                    module = importlib.import_module(module_name)
+                    imported_modules[module_name] = module
             except ImportError as e:
-                print(f"[ ERROR ] : Failed to import {module_name} - {e}")
+                print(f"[ ERROR ] : Failed to import {str(module_name)} - {str(e)}")
     except FileNotFoundError:
         print("LIBLOAD PANIC!!! LIBS.EL NOT FOUND!")
         exit(1)
     except Exception as Error:
-        print(f"Internal Critical Error! ({Error})")
+        print(f"Internal Critical Error! ({str(Error)})")
         exit(1)
     return imported_modules
 
@@ -33,14 +36,17 @@ def get_libs():
             module_names = f.readlines()
         for module_name in module_names:
             module_name = module_name.strip()
-            if not module_name:
-                continue
-            imported_modules[module_name] = True
+            if module_name[0][0] == ";" or module_name[0][0] == "-" or module_name[0][0] == "":
+                pass
+            else:
+                if not module_name:
+                    continue
+                imported_modules[module_name] = True
     except FileNotFoundError:
         print("LIBLOAD PANIC!!! LIBS.EL NOT FOUND!")
         exit(1)
     except Exception as Error:
-        print(f"Libload GET Error! ({Error})")
+        print(f"Libload GET Error! ({str(Error)})")
     return imported_modules
 
 def add_lib(name):
@@ -53,7 +59,7 @@ def add_lib(name):
         exit(1)
         return False
     except Exception as Error:
-        print(f"Internal Critical Error! ({Error})")
+        print(f"Internal Critical Error! ({str(Error)})")
         exit(1)
         return False
 

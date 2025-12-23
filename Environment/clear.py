@@ -5,6 +5,7 @@ class Environment:
         "name": "Clear",
         "credits": [],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "Simple Clear Screen Utility (Built-in)",
         "helpinfo": "Just type clear to empty the screen."
     }

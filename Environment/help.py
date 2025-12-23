@@ -5,6 +5,7 @@ class Environment:
         "name": "Help",
         "credits": [],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "Gets Help Information from libaries! (Built-in)",
         "helpinfo": "help [LIBARY]"
     }

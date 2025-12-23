@@ -7,3 +7,4 @@ help
 edit
 
 tedit
+ex

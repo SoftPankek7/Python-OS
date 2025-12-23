@@ -5,6 +5,7 @@ class Environment:
         "name": "Contents",
         "credits": [],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "A simple file-reading util for the Environment. (Built-in)",
         "helpinfo": "contents [PATH]\n[PATH] is the place to put your target file to read."
     }

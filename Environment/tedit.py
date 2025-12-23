@@ -3,6 +3,7 @@ class Environment:
         "name": "TEDIT",
         "credits": ["Charlie T"],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "A minimal NANO-like text editor with a clean TUI",
         "helpinfo": "tedit [filename] (filename not needed, unless you want to save your file.)"
     }

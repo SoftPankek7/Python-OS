@@ -5,8 +5,9 @@ class Environment:
         "name": "Info",
         "credits": [],
         "version": 1.0,
+        "reqVersion": 1.3,
         "description": "Get Information from libaries! (Built-in)",
-        "helpinfo": "info [LIBARY]"
+        "helpinfo": "info [LIBRARY] [-r, -n, -c, -v, -d, -h, -s]\n-r  = LIBRARY's Raw Info Data\n-n  = LIBRARY's Name\n-c  = LIBRARY's Credits\n-v  = LIBRARY's Version\n-d  = LIBRARY's Description\n-h  = LIBRARY's Help info (same as the command help)\n-s  = LIBRARY's Required System Version"
     }
     import libload as lib
     global libs, system
@@ -14,15 +15,42 @@ class Environment:
     system = libs["system"]
     def RunFromEnv(function):
         try:
-            system.lprint(system.Output.Format.RED + "Raw:  " + str(libs[function[0]].Environment.LibInfo))
-            info = libs[function[0]].Environment.LibInfo
-            print("Name:     "+str(info["name"]))
-            system.lprint(system.Output.Format.RESET + "Devs:     "+str(info["credits"]))
-            print("Version:  "+str(info["version"]))
-            system.lprint(system.Output.Format.RESET + "Desc:     "+str(info["description"]))
-            print("Help:     "+str(info["helpinfo"]))
+            if len(function) == 1:
+                print("Raw:"+ str(libs[function[0]].Environment.LibInfo))
+                info = libs[function[0]].Environment.LibInfo
+                print("Name:     "+str(info["name"]))
+                print("Credits:     "+str(info["credits"]))
+                print("Version:  "+str(info["version"]))
+                try:
+                    print("Req. Version:     "+str(info["reqVersion"]))
+                except:
+                    print("Req. Version:     1.3 (AutoDetect)")
+                print("Desc:\n"+str(info["description"]))
+                print("Help:\n"+str(info["helpinfo"]))
+            if len(function) >= 2:
+                for i in function:
+                    if i == function[0]:
+                        continue
+                    else:
+                        info = libs[function[0]].Environment.LibInfo
+                        if i == "-r":
+                            print("Raw:"+ str(libs[function[0]].Environment.LibInfo))
+                        elif i == "-n":
+                            print("Name:     "+str(info["name"]))
+                        elif i == "-c":
+                            print("Credits:     "+str(info["credits"]))
+                        elif i == "-v":
+                            print("Version:  "+str(info["version"]))
+                        elif i == "-d":
+                            print("Desc:\n"+str(info["description"]))
+                        elif i == "-h":
+                            print("Help:\n"+str(info["helpinfo"]))
+                        else:
+                            print("* Arg "+i+" not supported. Try help info.")
+
         except Exception as Error:
             system.Output.warn("Could not generate info - "+str(Error))
             pass
         except IndexError:
             system.Output.warn("Could Not Read File (No Args)")
+            system.Output.info("Try typing help info")
